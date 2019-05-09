@@ -13,9 +13,13 @@ InfoSaône - Module Odoo 12 pour SAB
     'depends'    : [
         'base',
         'sale',
+        'sale_management',
         'document',
         'product',
         'purchase',
+        'event',
+        'association',
+        'membership',
     ],
     'data' : [
         'security/ir.model.access.csv',
