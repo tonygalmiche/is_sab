@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="res.groups" id="is_administrateur_web" >
+            <field name="name">Administrateur WEB</field>
+            <field name="comment"></field>
+    </record>
+</odoo>

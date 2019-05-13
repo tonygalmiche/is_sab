@@ -22,9 +22,10 @@ InfoSaône - Module Odoo 12 pour SAB
         'membership',
     ],
     'data' : [
+        'security/res_groups.xml',
         'security/ir.model.access.csv',
         'views/event_views.xml',
-        #'views/res_partner_views.xml',
+        'views/res_partner_views.xml',
         #'views/menu.xml',
     ],
     'installable': True,
