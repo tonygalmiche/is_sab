@@ -2,4 +2,5 @@
 
 #from . import res_partner
 from . import event
+from . import is_groupe
 from . import res_partner

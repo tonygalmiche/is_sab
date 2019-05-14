@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_is_groupe,access_is_groupe,model_is_groupe,base.group_user,1,0,0,0 
+access_is_groupe_admi,access_is_groupe_admin,model_is_groupe,is_sab.is_administrateur_web,1,1,1,1 
 

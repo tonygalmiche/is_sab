@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="is_groupe_form" model="ir.ui.view">
+        <field name="name">is.groupe.form</field>
+        <field name="model">is.groupe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="responsable_ids" widget="many2many_tags"/>
+                            <field name="membre_ids"      widget="many2many_tags"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_groupe_tree" model="ir.ui.view">
+        <field name="name">is.groupe.tree</field>
+        <field name="model">is.groupe</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="responsable_ids"/>
+                <field name="membre_ids"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_groupe_search" model="ir.ui.view">
+        <field name="name">is.groupe.search</field>
+        <field name="model">is.groupe</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="responsable_ids"/>
+                <field name="membre_ids"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_groupe_action" model="ir.actions.act_window">
+        <field name="name">Groupes</field>
+        <field name="res_model">is.groupe</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="is_groupe_menu"
+        name="Groupes"
+        parent="membership.menu_association"
+        sequence="1"
+        action="is_groupe_action"
+    />
+</odoo>
+
+
+
+

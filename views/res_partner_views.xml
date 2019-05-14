@@ -26,6 +26,9 @@
                         <field name="is_mot_de_passe" groups="is_sab.is_administrateur_web"/>
                     </group>
                 </group>
+                <group>
+                    <field name="is_groupe_ids" widget="many2many_tags"/>
+                </group>
             </field>
         </field>
     </record>
