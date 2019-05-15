@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record model="ir.ui.view" id="is_view_event_form">
         <field name="name">is_view_event_form</field>
         <field name="model">event.event</field>
@@ -8,11 +7,14 @@
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="is_order_id"/>
+                <field name="is_animateur_ids" widget="many2many_tags"/>
+            </field>
+            <field name="event_type_id" position="before">
+                <field name="is_facture"/>
+                <field name="is_paye"/>
             </field>
         </field>
     </record>
-
-
     <record model="ir.ui.view" id="is_view_event_tree">
         <field name="name">is_view_event_tree</field>
         <field name="model">event.event</field>
@@ -20,10 +22,11 @@
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="is_order_id"/>
+                <field name="is_facture"/>
+                <field name="is_paye"/>
             </field>
         </field>
     </record>
-
     <record model="ir.ui.view" id="is_view_event_search">
         <field name="name">is_view_event_search</field>
         <field name="model">event.event</field>
@@ -31,8 +34,9 @@
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="is_order_id"/>
+                <field name="is_facture"/>
+                <field name="is_paye"/>
             </field>
         </field>
     </record>
-
 </odoo>
