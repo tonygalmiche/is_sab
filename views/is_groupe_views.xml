@@ -46,13 +46,6 @@
         <field name="limit">100</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem
-        id="is_groupe_menu"
-        name="Groupes"
-        parent="membership.menu_association"
-        sequence="1"
-        action="is_groupe_action"
-    />
 </odoo>
 
 

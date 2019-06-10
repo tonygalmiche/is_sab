@@ -2,17 +2,26 @@
 from odoo import api, fields, models, _
 
 
+class IsTypeContact(models.Model):
+    _name = 'is.type.contact'
+    _description = "Type de contact"
+    _order = 'name'
+
+    name = fields.Char("Type de contact", required=True, index=True)
+
+
 class ResPartner(models.Model):
     _inherit = 'res.partner'
-
 
     is_prenom                 = fields.Char(u"Prénom")
     is_date_naissance         = fields.Date(u"Date de naissance")
     is_date_premiere_adhesion = fields.Date(u"Date de première adhésion")
-    is_date_fin_adhesion      = fields.Date(u"Date de fin d'adhésion")
+    is_date_fin_adhesion      = fields.Date(u"Date de départ")
+    is_motif_depart           = fields.Char(u"Motif de départ")
     is_login                  = fields.Char(u"Login outils externes")
     is_mot_de_passe           = fields.Char(u"Mot de passe outils externes")
     is_groupe_ids             = fields.Many2many('is.groupe','is_groupe_membre_rel','partner_id','groupe_id', string="Membre des groupes")
+    is_type_contact_id        = fields.Many2one('is.type.contact', 'Type de contact',index=True)
 
 
     @api.model

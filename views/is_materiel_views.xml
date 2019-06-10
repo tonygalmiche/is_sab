@@ -72,13 +72,6 @@
         <field name="limit">100</field>
         <field name="view_mode">tree,form,calendar</field>
     </record>
-    <menuitem
-        id="is_materiel_menu"
-        name="Matériels"
-        parent="membership.menu_association"
-        sequence="2"
-        action="is_materiel_action"
-    />
 
     <record id="is_type_materiel_form" model="ir.ui.view">
         <field name="name">is.type.materiel.form</field>
@@ -118,13 +111,6 @@
         <field name="limit">100</field>
         <field name="view_mode">tree,form</field>
     </record>
-    <menuitem
-        id="is_type_materiel_menu"
-        name="Type de Matériels"
-        parent="membership.menu_association"
-        sequence="10"
-        action="is_type_materiel_action"
-    />
 </odoo>
 
 

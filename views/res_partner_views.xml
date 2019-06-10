@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+
+    <!-- is.type.contact -->
+    <record id="is_type_contact_form" model="ir.ui.view">
+        <field name="name">is.type.contact.form</field>
+        <field name="model">is.type.contact</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_type_contact_tree" model="ir.ui.view">
+        <field name="name">is.type.contact.tree</field>
+        <field name="model">is.type.contact</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_type_contact_search" model="ir.ui.view">
+        <field name="name">is.type.contact.search</field>
+        <field name="model">is.type.contact</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_type_contact_action" model="ir.actions.act_window">
+        <field name="name">Type de Matériels</field>
+        <field name="res_model">is.type.contact</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
     <record model="ir.ui.view" id="is_view_partner_form">
         <field name="name">is_view_partner_form</field>
         <field name="model">res.partner</field>
@@ -10,12 +51,14 @@
                 <field style="margin-right:7pt" name="is_prenom" placeholder="Prénom" string="Prénom" attrs="{'invisible': [('is_company','=', True)]}"/>
             </field>
             <field name="vat" position="before">
-                <field name="is_date_naissance"/>
+                <field name="is_type_contact_id"/>
+                <field name="is_date_naissance" attrs="{'invisible': [('is_company','=', True)]}"/>
             </field>
 
             <field name="free_member" position="after">
                 <field name="is_date_premiere_adhesion"/>
                 <field name="is_date_fin_adhesion"/>
+                <field name="is_motif_depart"/>
             </field>
             <field name="member_lines" position="after">
                 <group>
@@ -57,6 +100,7 @@
         <field name="arch" type="xml">
             <field name="display_name" position="after">
                 <field name="is_prenom"/>
+                <field name="is_type_contact_id"/>
             </field>
         </field>
     </record>
@@ -72,6 +116,7 @@
                 <field name="is_date_naissance"/>
                 <field name="is_date_premiere_adhesion"/>
                 <field name="is_date_fin_adhesion"/>
+                <field name="is_motif_depart"/>
             </field>
         </field>
     </record>
@@ -87,30 +132,45 @@
         <field name="arch" type="xml">
             <field name="name" position="before">
                 <field name="is_prenom"/>
+                <field name="is_type_contact_id"/>
             </field>
         </field>
     </record>
 
-
-<!--
-    <record  id="is_client_action" model="ir.actions.act_window">
-        <field name="name">Clients</field>
+    <record model="ir.actions.act_window" id="is_action_membership_members">
+        <field name="name">Membres</field>
         <field name="res_model">res.partner</field>
-        <field name="view_type">form</field>
-        <field name="limit">200</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{"search_default_customer":1}</field>
+        <field name="view_mode">tree,kanban,form,activity</field>
+        <field name="search_view_id" ref="membership.view_res_partner_member_filter"/>
+        <field name="context">{"search_default_all_members": 1, "default_free_member": True}</field>
     </record>
-    <record  id="is_partenaire_action" model="ir.actions.act_window">
-        <field name="name">Partenaires</field>
+    <record model="ir.actions.act_window.view" id="is_action_membership_members_view_tree">
+        <field name="sequence" eval="1"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="membership.membership_members_tree"/>
+        <field name="act_window_id" ref="is_action_membership_members"/>
+    </record>
+     <record model="ir.actions.act_window.view" id="action_membership_members_view_kanban">
+        <field name="sequence" eval="2"/>
+        <field name="view_mode">kanban</field>
+        <field name="view_id" ref="base.res_partner_kanban_view"/>
+        <field name="act_window_id" ref="is_action_membership_members"/>
+    </record>
+    <record model="ir.actions.act_window.view" id="action_membership_members_view_form">
+        <field name="sequence" eval="3"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="base.view_partner_form"/>
+        <field name="act_window_id" ref="is_action_membership_members"/>
+    </record>
+
+
+
+
+    <record model="ir.actions.act_window" id="is_contact_action">
+        <field name="name">Contacts</field>
         <field name="res_model">res.partner</field>
-        <field name="view_type">form</field>
-        <field name="limit">200</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{"search_default_supplier":1}</field>
+        <field name="view_mode">tree,kanban,form,activity</field>
+        <field name="context">{}</field>
     </record>
-    -->
-
-
 
 </odoo>

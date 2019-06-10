@@ -28,6 +28,7 @@ InfoSaône - Module Odoo 12 pour SAB
         'views/is_groupe_views.xml',
         'views/is_materiel_views.xml',
         'views/res_partner_views.xml',
+        'views/menu.xml',
     ],
     'installable': True,
     'application': True,

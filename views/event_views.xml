@@ -39,4 +39,18 @@
             </field>
         </field>
     </record>
+
+
+    <record model="ir.actions.act_window" id="is_evenement_action">
+       <field name="name">Évènements</field>
+       <field name="type">ir.actions.act_window</field>
+       <field name="res_model">event.event</field>
+       <field name="view_type">form</field>
+       <field name="view_mode">tree,kanban,form,calendar,pivot</field>
+       <field name="context">{"search_default_upcoming":1}</field>
+       <field name="search_view_id" ref="is_view_event_search"/>
+    </record>
+
+
+
 </odoo>

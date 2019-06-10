@@ -1,30 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <data>
-        <menuitem
-            name="Methalac"
-            id="is_methalac_main_menu"
-            sequence="90"
-        />
-        <menuitem   
-            name="Tables"  
-            id="is_tables_menu"
-            parent="is_methalac_main_menu"
-            sequence="90"
-        />
-        <menuitem
-            id="is_type_production_menu"
-            name="Type de production"
-            parent="is_tables_menu"
-            sequence="10"
-            action="is_type_production_action"
-        />
-        <menuitem
-            id="is_langue_menu"
-            name="Langue"
-            parent="is_tables_menu"
-            sequence="20"
-            action="is_langue_action"
-        />
-    </data>
+
+    <menuitem
+        name="SAB"
+        id="is_sab_main_menu"
+        sequence="1"
+    />
+    <menuitem
+        name="Membres"  
+        id="is_membres_main_menu"
+        parent="is_sab_main_menu"
+        sequence="10"
+    />
+    <menuitem
+        name="Membres" 
+        id="is_membres_menu"
+        sequence="10"
+        parent="is_membres_main_menu"
+        action="is_action_membership_members"
+    />
+
+    <menuitem
+        name="Groupes"
+        id="is_groupe_menu"
+        sequence="20"
+        parent="is_membres_main_menu"
+        action="is_groupe_action"
+    />
+
+    <menuitem
+        name="Évènements"  
+        id="is_evenement_menu"
+        sequence="20"
+        parent="is_sab_main_menu"
+        action="is_evenement_action"
+    />
+
+    <menuitem
+        name="Matériels"  
+        id="is_materiel_main_menu"
+        parent="is_sab_main_menu"
+        sequence="30"
+    />
+    <menuitem
+        id="is_materiel_menu"
+        name="Matériels"
+        parent="is_materiel_main_menu"
+        sequence="10"
+        action="is_materiel_action"
+    />
+    <menuitem
+        id="is_type_materiel_menu"
+        name="Type de Matériels"
+        parent="is_materiel_main_menu"
+        sequence="20"
+        action="is_type_materiel_action"
+    />
+
+    <menuitem
+        name="Contacts"  
+        id="is_contact_main_menu"
+        parent="is_sab_main_menu"
+        sequence="40"
+    />
+    <menuitem
+        id="is_contact_menu"
+        name="Contacts"
+        parent="is_contact_main_menu"
+        sequence="10"
+        action="is_contact_action"
+    />
+    <menuitem
+        id="is_type_contact_menu"
+        name="Type de contact"
+        parent="is_contact_main_menu"
+        sequence="20"
+        action="is_type_contact_action"
+    />
+
+    <menuitem
+        id="project.menu_main_pm"
+        parent="is_sab_main_menu"
+        sequence="50"
+    />
+
+    <menuitem
+        id="is_calendrier_menu"
+        name="Calendrier interne"
+        parent="is_sab_main_menu"
+        sequence="60"
+        action="calendar.action_calendar_event"
+    />
+
 </odoo>
