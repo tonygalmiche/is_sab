@@ -35,12 +35,58 @@
         </field>
     </record>
     <record  id="is_type_contact_action" model="ir.actions.act_window">
-        <field name="name">Type de Matériels</field>
+        <field name="name">Type de contact</field>
         <field name="res_model">is.type.contact</field>
         <field name="view_type">form</field>
         <field name="limit">100</field>
         <field name="view_mode">tree,form</field>
     </record>
+
+
+    <!-- is.login.externe -->
+    <record id="is_login_externe_form" model="ir.ui.view">
+        <field name="name">is.login.externe.form</field>
+        <field name="model">is.login.externe</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="partner_id"/>
+                        <field name="name"/>
+                        <field name="mot_de_passe"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_login_externe_tree" model="ir.ui.view">
+        <field name="name">is.login.externe.tree</field>
+        <field name="model">is.login.externe</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="partner_id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_login_externe_search" model="ir.ui.view">
+        <field name="name">is.login.externe.search</field>
+        <field name="model">is.login.externe</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="partner_id"/>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_login_externe_action" model="ir.actions.act_window">
+        <field name="name">Login externe</field>
+        <field name="res_model">is.login.externe</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
 
     <record model="ir.ui.view" id="is_view_partner_form">
         <field name="name">is_view_partner_form</field>
@@ -62,33 +108,11 @@
             </field>
             <field name="member_lines" position="after">
                 <group>
-                    <group>
-                        <field name="is_login" groups="is_sab.is_administrateur_web"/>
-                    </group>
-                    <group>
-                        <field name="is_mot_de_passe" groups="is_sab.is_administrateur_web"/>
-                    </group>
-                </group>
-                <group>
                     <field name="is_groupe_ids" widget="many2many_tags"/>
                 </group>
             </field>
         </field>
     </record>
-
-
-    <!--
-    <record model="ir.ui.view" id="is_membership_view_partner_form">
-        <field name="name">is_membership_view_partner_form</field>
-        <field name="model">res.partner</field>
-        <field name="inherit_id" ref="membership.view_partner_form"/>
-        <field name="arch" type="xml">
-            <field name="free_member" position="after">
-                <field name="is_date_premiere_adhesion"/>
-            </field>
-        </field>
-    </record>
-    -->
 
 
 

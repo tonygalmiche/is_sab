@@ -6,6 +6,8 @@
         id="is_sab_main_menu"
         sequence="1"
     />
+
+
     <menuitem
         name="Membres"  
         id="is_membres_main_menu"
@@ -19,7 +21,6 @@
         parent="is_membres_main_menu"
         action="is_action_membership_members"
     />
-
     <menuitem
         name="Groupes"
         id="is_groupe_menu"
@@ -27,6 +28,16 @@
         parent="is_membres_main_menu"
         action="is_groupe_action"
     />
+    <record id="is_login_externe_menu" model="ir.ui.menu" >
+        <field name="name">Login externes</field>
+        <field name="sequence">30</field>
+        <field name="parent_id" eval="ref('is_membres_main_menu')"/>
+        <field name="action"    ref="is_login_externe_action"/>
+        <field name="groups_id" eval="[(6,0,[
+            ref('is_sab.is_administrateur_web'),
+        ])]"/>
+    </record>
+
 
     <menuitem
         name="Évènements"  

@@ -10,6 +10,16 @@ class IsTypeContact(models.Model):
     name = fields.Char("Type de contact", required=True, index=True)
 
 
+class IsLoginExterne(models.Model):
+    _name = 'is.login.externe'
+    _description = "Login externe"
+    _order = 'name'
+
+    partner_id   = fields.Many2one('res.partner', 'Membre', required=True, index=True)
+    name         = fields.Char("Login externe", required=True, index=True)
+    mot_de_passe = fields.Char(u"Mot de passe outils externes")
+
+
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
@@ -18,8 +28,8 @@ class ResPartner(models.Model):
     is_date_premiere_adhesion = fields.Date(u"Date de première adhésion")
     is_date_fin_adhesion      = fields.Date(u"Date de départ")
     is_motif_depart           = fields.Char(u"Motif de départ")
-    is_login                  = fields.Char(u"Login outils externes")
-    is_mot_de_passe           = fields.Char(u"Mot de passe outils externes")
+    #is_login                  = fields.Char(u"Login outils externes")
+    #is_mot_de_passe           = fields.Char(u"Mot de passe outils externes")
     is_groupe_ids             = fields.Many2many('is.groupe','is_groupe_membre_rel','partner_id','groupe_id', string="Membre des groupes")
     is_type_contact_id        = fields.Many2one('is.type.contact', 'Type de contact',index=True)
 
