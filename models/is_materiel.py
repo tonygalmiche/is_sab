@@ -25,8 +25,8 @@ class IsMateriel(models.Model):
             for p in obj.pret_ids:
                 date_debut = p.date_debut
                 date_fin   = p.date_fin
-            if not date_fin and date_debut:
-                date_fin = date_debut + timedelta(days=365)
+            #if not date_fin and date_debut:
+            #    date_fin = date_debut + timedelta(days=365)
             obj.date_debut = date_debut
             obj.date_fin   = date_fin 
 
