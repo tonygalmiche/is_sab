@@ -33,6 +33,8 @@ InfoSaône - Module Odoo 12 pour SAB
     'installable': True,
     'application': True,
     'qweb': [
+        'static/src/xml/web_kanban_activity.xml',
     ],
+
 }
 
