@@ -11,6 +11,7 @@
                         <field name="type_materiel_id"/>
                         <field name="date_debut"/>
                         <field name="date_fin"/>
+                        <field name="date_retour"/>
                     </group>
                     <group>
                         <field name="pret_ids" nolabel="1">
@@ -19,6 +20,7 @@
                                 <field name="membre_id"/>
                                 <field name="date_debut"/>
                                 <field name="date_fin"/>
+                                <field name="date_retour"/>
                                 <field name="note"/>
                             </tree>
                         </field>
@@ -36,6 +38,7 @@
                 <field name="type_materiel_id"/>
                 <field name="date_debut"/>
                 <field name="date_fin"/>
+                <field name="date_retour"/>
             </tree>
         </field>
     </record>
