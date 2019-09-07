@@ -49,7 +49,7 @@ class IsMaterielPret(models.Model):
     membre_id   = fields.Many2one('res.partner', 'Membre'   , required=True)
     date_debut  = fields.Date("Date de début", required=True, index=True)
     date_fin    = fields.Date("Date de fin")
-
+    note        = fields.Text("Note")
 
 
 

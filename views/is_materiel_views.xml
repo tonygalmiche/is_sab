@@ -19,6 +19,7 @@
                                 <field name="membre_id"/>
                                 <field name="date_debut"/>
                                 <field name="date_fin"/>
+                                <field name="note"/>
                             </tree>
                         </field>
                     </group>
