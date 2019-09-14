@@ -1,17 +1,29 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_is_groupe,access_is_groupe,model_is_groupe,base.group_user,1,0,0,0 
-access_is_groupe_admi,access_is_groupe_admin,model_is_groupe,is_sab.is_administrateur_web,1,1,1,1 
+access_is_groupe,access_is_groupe,model_is_groupe,base.group_user,1,0,0,0
+access_is_groupe_admi,access_is_groupe_admin,model_is_groupe,is_sab.is_administrateur_web,1,1,1,1
 
-access_is_type_materiel,access_is_type_materiel,model_is_type_materiel,base.group_user,1,0,0,0 
-access_is_materiel,access_is_materiel,model_is_materiel,base.group_user,1,0,0,0 
-access_is_materiel_pret,access_is_materiel_pret,model_is_materiel_pret,base.group_user,1,0,0,0 
+access_is_type_materiel,access_is_type_materiel,model_is_type_materiel,base.group_user,1,0,0,0
+access_is_materiel,access_is_materiel,model_is_materiel,base.group_user,1,0,0,0
+access_is_materiel_pret,access_is_materiel_pret,model_is_materiel_pret,base.group_user,1,0,0,0
 
 access_is_type_materiel_gest,access_is_type_materiel_gest,model_is_type_materiel,event.group_event_manager,1,1,1,1
 access_is_materiel_gest,access_is_materiel_gest,model_is_materiel,event.group_event_manager,1,1,1,1
 access_is_materiel_pret_gest,access_is_materiel_pret_gest,model_is_materiel_pret,event.group_event_manager,1,1,1,1
 
-access_is_type_contact,access_is_type_contact,model_is_type_contact,base.group_user,1,0,0,0 
+access_is_type_contact,access_is_type_contact,model_is_type_contact,base.group_user,1,0,0,0
 access_is_type_contact_gest,access_is_type_contact_gest,model_is_type_contact,event.group_event_manager,1,1,1,1
 
 access_is_login_externe,access_is_login_externe,model_is_login_externe,is_sab.is_administrateur_web,1,1,1,1
+
+
+
+
+
+access_is_genre_livre,access_is_genre_livre,model_is_genre_livre,base.group_user,1,0,0,0
+access_is_livre,access_is_livre,model_is_livre,base.group_user,1,0,0,0
+access_is_livre_pret,access_is_livre_pret,model_is_livre_pret,base.group_user,1,0,0,0
+
+access_is_genre_livre_gest,access_is_genre_livre_gest,model_is_genre_livre,event.group_event_manager,1,1,1,1
+access_is_livre_gest,access_is_livre_gest,model_is_livre,base.group_user,event.group_event_manager,1,1,1,1
+access_is_livre_pret_gest,access_is_livre_pret_gest,model_is_livre_pret,base.group_user,event.group_event_manager,1,1,1,1
 

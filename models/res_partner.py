@@ -33,6 +33,12 @@ class ResPartner(models.Model):
     is_groupe_ids             = fields.Many2many('is.groupe','is_groupe_membre_rel','partner_id','groupe_id', string="Membre des groupes")
     is_type_contact_id        = fields.Many2one('is.type.contact', 'Type de contact',index=True)
 
+    is_trombinoscope          = fields.Boolean(u"J'accepte d'apparaître dans le trombinoscope")
+    is_trombi_adresse         = fields.Boolean(u"Afficher mon addrese")
+    is_trombi_tel_fixe        = fields.Boolean(u"Afficher mon téléphone fixe")
+    is_trombi_tel_portable    = fields.Boolean(u"Afficher mon téléphone portable")
+    is_trombi_mail            = fields.Boolean(u"Afficher mon email")
+
 
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):

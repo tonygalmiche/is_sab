@@ -110,6 +110,13 @@
                 <group>
                     <field name="is_groupe_ids" widget="many2many_tags"/>
                 </group>
+                <group string="Trombinoscope">
+                    <field name="is_trombinoscope"/>
+                    <field name="is_trombi_adresse"      attrs="{'invisible': [('is_trombinoscope','!=', True)]}"/>
+                    <field name="is_trombi_tel_fixe"     attrs="{'invisible': [('is_trombinoscope','!=', True)]}"/>
+                    <field name="is_trombi_tel_portable" attrs="{'invisible': [('is_trombinoscope','!=', True)]}"/>
+                    <field name="is_trombi_mail"         attrs="{'invisible': [('is_trombinoscope','!=', True)]}"/>
+                </group>
             </field>
         </field>
     </record>

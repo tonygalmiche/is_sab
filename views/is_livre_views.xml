@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!-- is.livre -->
+    <record id="is_livre_form" model="ir.ui.view">
+        <field name="name">is.livre.form</field>
+        <field name="model">is.livre</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="reference"/>
+                        <field name="auteur"/>
+                        <field name="date_publication"/>
+                        <field name="editeur"/>
+                        <field name="genre_livre_id"/>
+                        <field name="date_debut"/>
+                        <field name="date_fin"/>
+                        <field name="date_retour"/>
+                    </group>
+                    <group>
+                        <field name="pret_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="membre_id"/>
+                                <field name="date_debut"/>
+                                <field name="date_fin"/>
+                                <field name="date_retour"/>
+                                <field name="note"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_livre_tree" model="ir.ui.view">
+        <field name="name">is.livre.tree</field>
+        <field name="model">is.livre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="auteur"/>
+                <field name="date_publication"/>
+                <field name="editeur"/>
+                <field name="genre_livre_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="date_retour"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="is_livre_calendar">
+        <field name="name">is_livre_calendar</field>
+        <field name="model">is.livre</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_debut" date_stop="date_fin" string="Livre" color="genre_livre_id" mode="month">
+                <field name="name"/>
+                <field name="genre_livre_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="is_livre_search" model="ir.ui.view">
+        <field name="name">is.livre.search</field>
+        <field name="model">is.livre</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="reference"/>
+                <field name="auteur"/>
+                <field name="date_publication"/>
+                <field name="editeur"/>
+                <field name="genre_livre_id"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_livre_action" model="ir.actions.act_window">
+        <field name="name">Livres</field>
+        <field name="res_model">is.livre</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+
+
+    <!-- is.genre.livre -->
+    <record id="is_genre_livre_form" model="ir.ui.view">
+        <field name="name">is.genre.livre.form</field>
+        <field name="model">is.genre.livre</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_genre_livre_tree" model="ir.ui.view">
+        <field name="name">is.genre.livre.tree</field>
+        <field name="model">is.genre.livre</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_genre_livre_search" model="ir.ui.view">
+        <field name="name">is.genre.livre.search</field>
+        <field name="model">is.genre.livre</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_genre_livre_action" model="ir.actions.act_window">
+        <field name="name">Genre de livre</field>
+        <field name="res_model">is.genre.livre</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- is.livre.pret -->
+    <record id="is_livre_pret_form" model="ir.ui.view">
+        <field name="name">is.livre.pret.form</field>
+        <field name="model">is.livre.pret</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="livre_id"/>
+                        <field name="membre_id"/>
+                        <field name="date_debut"/>
+                        <field name="date_fin"/>
+                        <field name="date_retour"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_livre_pret_tree" model="ir.ui.view">
+        <field name="name">is.livre.pret.tree</field>
+        <field name="model">is.livre.pret</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="livre_id"/>
+                <field name="membre_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="date_retour"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="is_livre_pret_calendar">
+        <field name="name">is_livre_pret_calendar</field>
+        <field name="model">is.livre.pret</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_debut" date_stop="date_fin" string="Prêt du matériel" color="livre_id" mode="month">
+                <field name="livre_id"/>
+                <field name="membre_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="is_livre_pret_search" model="ir.ui.view">
+        <field name="name">is.livre.pret.search</field>
+        <field name="model">is.livre.pret</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="livre_id"/>
+                <field name="membre_id"/>
+                <field name="note"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_livre_pret_action" model="ir.actions.act_window">
+        <field name="name">Lignes de prêts des livres</field>
+        <field name="res_model">is.livre.pret</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form,calendar</field>
+    </record>
+</odoo>
+
+
+
+
+

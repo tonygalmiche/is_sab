@@ -5,3 +5,4 @@ from . import event
 from . import is_groupe
 from . import res_partner
 from . import is_materiel
+from . import is_livre

@@ -77,6 +77,39 @@
     />
 
 
+
+
+    <menuitem
+        name="Bibliothèque"  
+        id="is_livre_main_menu"
+        parent="is_sab_main_menu"
+        sequence="35"
+    />
+    <menuitem
+        id="is_livre_menu"
+        name="Livres"
+        parent="is_livre_main_menu"
+        sequence="10"
+        action="is_livre_action"
+    />
+    <menuitem
+        id="is_livre_pret_menu"
+        name="Lignes de prêts des livres"
+        parent="is_livre_main_menu"
+        sequence="20"
+        action="is_livre_pret_action"
+    />
+    <menuitem
+        id="is_genre_livre_menu"
+        name="Genres de livres"
+        parent="is_livre_main_menu"
+        sequence="30"
+        action="is_genre_livre_action"
+    />
+
+
+
+
     <menuitem
         name="Contacts"  
         id="is_contact_main_menu"
