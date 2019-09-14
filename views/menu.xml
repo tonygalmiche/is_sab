@@ -47,6 +47,7 @@
         action="is_evenement_action"
     />
 
+
     <menuitem
         name="Matériels"  
         id="is_materiel_main_menu"
@@ -61,12 +62,20 @@
         action="is_materiel_action"
     />
     <menuitem
+        id="is_materiel_pret_menu"
+        name="Lignes de prêts du matériel"
+        parent="is_materiel_main_menu"
+        sequence="20"
+        action="is_materiel_pret_action"
+    />
+    <menuitem
         id="is_type_materiel_menu"
         name="Type de Matériels"
         parent="is_materiel_main_menu"
-        sequence="20"
+        sequence="30"
         action="is_type_materiel_action"
     />
+
 
     <menuitem
         name="Contacts"  

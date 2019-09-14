@@ -5,6 +5,9 @@
         <field name="model">event.event</field>
         <field name="inherit_id" ref="event.view_event_form"/>
         <field name="arch" type="xml">
+            <button name="button_cancel" position="after">
+                <button string="Récurrence" type="action" name="%(is_event_reccurent_wizard_action)d"/>
+            </button>
             <field name="user_id" position="after">
                 <field name="is_order_id"/>
                 <field name="is_animateur_ids" widget="many2many_tags"/>

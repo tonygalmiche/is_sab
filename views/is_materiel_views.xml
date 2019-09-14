@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
+
+    <!-- is.materiel -->
     <record id="is_materiel_form" model="ir.ui.view">
         <field name="name">is.materiel.form</field>
         <field name="model">is.materiel</field>
@@ -42,13 +45,11 @@
             </tree>
         </field>
     </record>
-
-
     <record model="ir.ui.view" id="is_materiel_calendar">
         <field name="name">is_materiel_calendar</field>
         <field name="model">is.materiel</field>
         <field name="arch" type="xml">
-            <calendar date_start="date_debut" date_stop="date_fin" string="Matériel" color="type_materiel_id">
+            <calendar date_start="date_debut" date_stop="date_fin" string="Matériel" color="type_materiel_id" mode="month">
                 <field name="name"/>
                 <field name="type_materiel_id"/>
                 <field name="date_debut"/>
@@ -56,9 +57,6 @@
             </calendar>
         </field>
     </record>
-
-
-
     <record id="is_materiel_search" model="ir.ui.view">
         <field name="name">is.materiel.search</field>
         <field name="model">is.materiel</field>
@@ -77,6 +75,8 @@
         <field name="view_mode">tree,form,calendar</field>
     </record>
 
+
+    <!-- is.type.materiel -->
     <record id="is_type_materiel_form" model="ir.ui.view">
         <field name="name">is.type.materiel.form</field>
         <field name="model">is.type.materiel</field>
@@ -114,6 +114,74 @@
         <field name="view_type">form</field>
         <field name="limit">100</field>
         <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- is.materiel.pret -->
+    <record id="is_materiel_pret_form" model="ir.ui.view">
+        <field name="name">is.materiel.pret.form</field>
+        <field name="model">is.materiel.pret</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="materiel_id"/>
+                        <field name="event_id"/>
+                        <field name="membre_id"/>
+                        <field name="date_debut"/>
+                        <field name="date_fin"/>
+                        <field name="date_retour"/>
+                        <field name="note"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_materiel_pret_tree" model="ir.ui.view">
+        <field name="name">is.materiel.pret.tree</field>
+        <field name="model">is.materiel.pret</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="materiel_id"/>
+                <field name="event_id"/>
+                <field name="membre_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+                <field name="date_retour"/>
+                <field name="note"/>
+            </tree>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="is_materiel_pret_calendar">
+        <field name="name">is_materiel_pret_calendar</field>
+        <field name="model">is.materiel.pret</field>
+        <field name="arch" type="xml">
+            <calendar date_start="date_debut" date_stop="date_fin" string="Prêt du matériel" color="materiel_id" mode="month">
+                <field name="materiel_id"/>
+                <field name="membre_id"/>
+                <field name="date_debut"/>
+                <field name="date_fin"/>
+            </calendar>
+        </field>
+    </record>
+    <record id="is_materiel_pret_search" model="ir.ui.view">
+        <field name="name">is.materiel.pret.search</field>
+        <field name="model">is.materiel.pret</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="materiel_id"/>
+                <field name="event_id"/>
+                <field name="membre_id"/>
+                <field name="note"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_materiel_pret_action" model="ir.actions.act_window">
+        <field name="name">Lignes de prêts du matériel</field>
+        <field name="res_model">is.materiel.pret</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form,calendar</field>
     </record>
 </odoo>
 

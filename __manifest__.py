@@ -24,6 +24,7 @@ InfoSaône - Module Odoo 12 pour SAB
     'data' : [
         'security/res_groups.xml',
         'security/ir.model.access.csv',
+        'wizard/is_event_recurrent_wizard_view.xml',
         'views/event_views.xml',
         'views/is_groupe_views.xml',
         'views/is_materiel_views.xml',
