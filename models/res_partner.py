@@ -40,6 +40,15 @@ class ResPartner(models.Model):
     is_trombi_mail            = fields.Boolean(u"Afficher mon email")
 
 
+
+    @api.depends('is_company', 'name', 'parent_id.name', 'type', 'company_name','is_prenom')
+    def _compute_display_name(self):
+        diff = dict(show_address=None, show_address_only=None, show_email=None)
+        names = dict(self.with_context(**diff).name_get())
+        for partner in self:
+            partner.display_name = names.get(partner.id)
+
+
     @api.model
     def _name_search(self, name, args=None, operator='ilike', limit=100, name_get_uid=None):
         args = args or []

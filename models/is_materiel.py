@@ -35,6 +35,7 @@ class IsMateriel(models.Model):
 
     name             = fields.Char("Nom", required=True, index=True)
     type_materiel_id = fields.Many2one('is.type.materiel', 'Type de matériel', required=True,index=True)
+    prix             = fields.Float(u'Prix', digits=(14,2))
     pret_ids         = fields.One2many('is.materiel.pret', 'materiel_id', u'Prêts')
     date_debut       = fields.Date("Date de début", compute='_compute', readonly=True, store=True)
     date_fin         = fields.Date("Date de fin"  , compute='_compute', readonly=True, store=True)
@@ -53,6 +54,8 @@ class IsMaterielPret(models.Model):
     date_fin    = fields.Date("Date de fin")
     date_retour = fields.Date("Date de retour")
     note        = fields.Text("Note")
+
+
 
 
 
