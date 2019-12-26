@@ -20,6 +20,22 @@ class IsLoginExterne(models.Model):
     mot_de_passe = fields.Char(u"Mot de passe outils externes")
 
 
+class IsMotifDepart(models.Model):
+    _name = 'is.motif.depart'
+    _description = u"Motif de départ"
+    _order = 'name'
+
+    name = fields.Char(u"Motif de départ", required=True, index=True)
+
+
+class IsCompetence(models.Model):
+    _name = 'is.competence'
+    _description = u"Compétence"
+    _order = 'name'
+
+    name = fields.Char(u"Compétence", required=True, index=True)
+
+
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
@@ -27,12 +43,10 @@ class ResPartner(models.Model):
     is_date_naissance         = fields.Date(u"Date de naissance")
     is_date_premiere_adhesion = fields.Date(u"Date de première adhésion")
     is_date_fin_adhesion      = fields.Date(u"Date de départ")
-    is_motif_depart           = fields.Char(u"Motif de départ")
-    #is_login                  = fields.Char(u"Login outils externes")
-    #is_mot_de_passe           = fields.Char(u"Mot de passe outils externes")
+    is_motif_depart_id        = fields.Many2one('is.motif.depart', 'Motif de départ',index=True)
     is_groupe_ids             = fields.Many2many('is.groupe','is_groupe_membre_rel','partner_id','groupe_id', string="Membre des groupes")
-    is_type_contact_id        = fields.Many2one('is.type.contact', 'Type de contact',index=True)
-
+    is_type_contact_ids       = fields.Many2many('is.type.contact','res_partner_type_contact_rel','partner_id','type_contact_id', string="Types de contact")
+    is_competence_ids         = fields.Many2many('is.competence','res_partner_competence_rel','partner_id','competence_id', string="Compétences")
     is_trombinoscope          = fields.Boolean(u"J'accepte d'apparaître dans le trombinoscope")
     is_trombi_adresse         = fields.Boolean(u"Afficher mon addrese")
     is_trombi_tel_fixe        = fields.Boolean(u"Afficher mon téléphone fixe")

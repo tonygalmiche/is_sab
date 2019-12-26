@@ -37,6 +37,25 @@
             ref('is_sab.is_administrateur_web'),
         ])]"/>
     </record>
+    <record id="is_motif_depart_menu" model="ir.ui.menu" >
+        <field name="name">Motif de départ</field>
+        <field name="sequence">40</field>
+        <field name="parent_id" eval="ref('is_membres_main_menu')"/>
+        <field name="action"    ref="is_motif_depart_action"/>
+        <field name="groups_id" eval="[(6,0,[
+            ref('event.group_event_manager'),
+        ])]"/>
+    </record>
+    <record id="is_competence_menu" model="ir.ui.menu" >
+        <field name="name">Compétence</field>
+        <field name="sequence">50</field>
+        <field name="parent_id" eval="ref('is_membres_main_menu')"/>
+        <field name="action"    ref="is_competence_action"/>
+        <field name="groups_id" eval="[(6,0,[
+            ref('event.group_event_manager'),
+        ])]"/>
+    </record>
+
 
 
     <menuitem

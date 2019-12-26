@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="is_view_sale_order_form_inherit_event" model="ir.ui.view">
+        <field name="name">is_view_sale_order_form_inherit_event</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="event_sale.view_sale_order_form_inherit_event"/>
+        <field name="arch" type="xml">
+            <field name="event_id" position="replace">
+                <field
+                    name="event_id"
+                    domain="[
+                        ('event_ticket_ids.product_id','=', product_id)
+                    ]"
+                    attrs="{'invisible': [('event_ok', '=', False)], 'required': [('event_ok', '!=', False)]}"
+                    options="{'no_open': True, 'no_create': True}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

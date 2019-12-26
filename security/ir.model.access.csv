@@ -15,10 +15,6 @@ access_is_type_contact_gest,access_is_type_contact_gest,model_is_type_contact,ev
 
 access_is_login_externe,access_is_login_externe,model_is_login_externe,is_sab.is_administrateur_web,1,1,1,1
 
-
-
-
-
 access_is_genre_livre,access_is_genre_livre,model_is_genre_livre,base.group_user,1,0,0,0
 access_is_livre,access_is_livre,model_is_livre,base.group_user,1,0,0,0
 access_is_livre_pret,access_is_livre_pret,model_is_livre_pret,base.group_user,1,0,0,0
@@ -26,4 +22,10 @@ access_is_livre_pret,access_is_livre_pret,model_is_livre_pret,base.group_user,1,
 access_is_genre_livre_gest,access_is_genre_livre_gest,model_is_genre_livre,event.group_event_manager,1,1,1,1
 access_is_livre_gest,access_is_livre_gest,model_is_livre,event.group_event_manager,1,1,1,1
 access_is_livre_pret_gest,access_is_livre_pret_gest,model_is_livre_pret,event.group_event_manager,1,1,1,1
+
+access_is_motif_depart,access_is_motif_depart,model_is_motif_depart,base.group_user,1,0,0,0
+access_is_motif_depart_manager,access_is_motif_depart_manager,model_is_motif_depart,event.group_event_manager,1,1,1,1
+
+access_is_competence,access_is_competence,model_is_competence,base.group_user,1,0,0,0
+access_is_competence_manager,access_is_competence_manager,model_is_competence,event.group_event_manager,1,1,1,1
 

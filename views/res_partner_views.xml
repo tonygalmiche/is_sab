@@ -88,6 +88,89 @@
     </record>
 
 
+    <!-- is.motif.depart -->
+    <record id="is_motif_depart_form" model="ir.ui.view">
+        <field name="name">is.motif.depart.form</field>
+        <field name="model">is.motif.depart</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_motif_depart_tree" model="ir.ui.view">
+        <field name="name">is.motif.depart.tree</field>
+        <field name="model">is.motif.depart</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_motif_depart_search" model="ir.ui.view">
+        <field name="name">is.motif.depart.search</field>
+        <field name="model">is.motif.depart</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_motif_depart_action" model="ir.actions.act_window">
+        <field name="name">Motif de départ</field>
+        <field name="res_model">is.motif.depart</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- is.competence -->
+    <record id="is_competence_form" model="ir.ui.view">
+        <field name="name">is.competence.form</field>
+        <field name="model">is.competence</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="is_competence_tree" model="ir.ui.view">
+        <field name="name">is.competence.tree</field>
+        <field name="model">is.competence</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    <record id="is_competence_search" model="ir.ui.view">
+        <field name="name">is.competence.search</field>
+        <field name="model">is.competence</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+           </search>
+        </field>
+    </record>
+    <record  id="is_competence_action" model="ir.actions.act_window">
+        <field name="name">Compétence</field>
+        <field name="res_model">is.competence</field>
+        <field name="view_type">form</field>
+        <field name="limit">100</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+
+    <!-- res.partner -->
     <record model="ir.ui.view" id="is_view_partner_form">
         <field name="name">is_view_partner_form</field>
         <field name="model">res.partner</field>
@@ -97,18 +180,19 @@
                 <field style="margin-right:7pt" name="is_prenom" placeholder="Prénom" string="Prénom" attrs="{'invisible': [('is_company','=', True)]}"/>
             </field>
             <field name="vat" position="before">
-                <field name="is_type_contact_id"/>
+                <field name="is_type_contact_ids"  widget="many2many_tags"/>
                 <field name="is_date_naissance" attrs="{'invisible': [('is_company','=', True)]}"/>
             </field>
 
             <field name="free_member" position="after">
                 <field name="is_date_premiere_adhesion"/>
                 <field name="is_date_fin_adhesion"/>
-                <field name="is_motif_depart"/>
+                <field name="is_motif_depart_id" attrs="{'invisible': [('is_date_fin_adhesion','=', False)]}"/>
             </field>
             <field name="member_lines" position="after">
                 <group>
-                    <field name="is_groupe_ids" widget="many2many_tags"/>
+                    <field name="is_groupe_ids"     widget="many2many_tags"/>
+                    <field name="is_competence_ids" widget="many2many_tags"/>
                 </group>
                 <group string="Trombinoscope">
                     <field name="is_trombinoscope"/>
@@ -131,7 +215,10 @@
         <field name="arch" type="xml">
             <field name="display_name" position="after">
                 <field name="is_prenom"/>
-                <field name="is_type_contact_id"/>
+            </field>
+            <field name="category_id" position="replace">
+                <field name="zip"/>
+                <field name="city"/>
             </field>
         </field>
     </record>
@@ -147,7 +234,7 @@
                 <field name="is_date_naissance"/>
                 <field name="is_date_premiere_adhesion"/>
                 <field name="is_date_fin_adhesion"/>
-                <field name="is_motif_depart"/>
+                <field name="is_motif_depart_id"/>
             </field>
         </field>
     </record>
@@ -163,7 +250,22 @@
         <field name="arch" type="xml">
             <field name="name" position="before">
                 <field name="is_prenom"/>
-                <field name="is_type_contact_id"/>
+                <field name="is_type_contact_ids"/>
+                <field name="is_competence_ids"/>
+                <field name="is_motif_depart_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="is_view_res_partner_member_filter" model="ir.ui.view">
+        <field name="name">is_view_res_partner_member_filter</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="membership.view_res_partner_member_filter" />
+        <field name="arch" type="xml">
+            <field name="category_id" position="after">
+                <field name="is_prenom"/>
+                <field name="is_type_contact_ids"/>
+                <field name="is_competence_ids"/>
+                <field name="is_motif_depart_id"/>
             </field>
         </field>
     </record>
