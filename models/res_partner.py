@@ -102,3 +102,69 @@ class ResPartner(models.Model):
         return name
 
 
+    def _membership_state(self):
+        """This Function return Membership State For Given Partner. """
+        res = {}
+        today = fields.Date.today()
+        for partner in self:
+            res[partner.id] = 'none'
+
+            if partner.membership_cancel and today > partner.membership_cancel:
+                res[partner.id] = 'free' if partner.free_member else 'canceled'
+                continue
+            if partner.membership_stop and today > partner.membership_stop:
+                res[partner.id] = 'free' if partner.free_member else 'old'
+                continue
+            if partner.associate_member:
+                res_state = partner.associate_member._membership_state()
+                res[partner.id] = res_state[partner.associate_member.id]
+                continue
+            s = 4
+            if partner.member_lines:
+                for mline in partner.member_lines.sorted(key=lambda r: r.id):
+                    if (mline.date_to or date.min) >= today and (mline.date_from or date.min) <= today:
+                        if mline.account_invoice_line.invoice_id.partner_id == partner:
+                            mstate = mline.account_invoice_line.invoice_id.state
+                            if mstate == 'paid':
+                                inv = mline.account_invoice_line.invoice_id
+                                if inv.residual==0:
+                                    s = 0
+                                else:
+                                    for ml in inv.payment_move_line_ids:
+                                        if any(ml.invoice_id.filtered(lambda inv: inv.type == 'out_refund')):
+                                            s = 2
+                                        else:
+                                            s = 0
+                            elif mstate == 'open' and s != 0:
+                                s = 1
+                            elif mstate == 'cancel' and s != 0 and s != 1:
+                                s = 2
+                            elif mstate == 'draft' and s != 0 and s != 1:
+                                s = 3
+                        """
+                            If we have a line who is in the period and paid,
+                            the line is valid and can be used for the membership status.
+                        """
+                        if s == 0:
+                            break
+                if s == 4:
+                    for mline in partner.member_lines:
+                        if (mline.date_from or date.min) < today and (mline.date_to or date.min) < today and (mline.date_from or date.min) <= (mline.date_to or date.min) and mline.account_invoice_line and mline.account_invoice_line.invoice_id.state == 'paid':
+                            s = 5
+                        else:
+                            s = 6
+                if s == 0:
+                    res[partner.id] = 'paid'
+                elif s == 1:
+                    res[partner.id] = 'invoiced'
+                elif s == 2:
+                    res[partner.id] = 'canceled'
+                elif s == 3:
+                    res[partner.id] = 'waiting'
+                elif s == 5:
+                    res[partner.id] = 'old'
+                elif s == 6:
+                    res[partner.id] = 'none'
+            if partner.free_member and s != 0:
+                res[partner.id] = 'free'
+        return res
